@@ -30,7 +30,7 @@ cacheSolve <- function(x, ...) {
 	
   inv <- x$getInverse()
   if(!is.null(inv)){
-    message("It was stored already.")
+    message("getting cached data")
     return(inv)
   }
 
