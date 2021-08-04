@@ -3,18 +3,19 @@
 
 makeCacheMatrix <- function(x = matrix()) {
 
-	inv <- NULL
-	set <- function(y){
-		x <<- y
-		inv <<- NULL
-	}
+  inv <- NULL
+  set <- function(y){
+    x <<- y
+    inv <<- NULL
+  }
 
 
-	get <- function() x
-	setInverse <- function(solveMatrix) inv <<- solveMatrix
-	getInverse <- function() inv
-	list(set = set, get=get, setInverse = setInverse , getInverse=getInverse)
+  get <- function() x
+  setInverse <- function(solveMatrix) inv <<- solveMatrix
+  getInverse <- function() inv
+  list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 	
+
 }
 
 ##Now the above function will return the matrixObject.
@@ -27,16 +28,17 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
 	
-	inv <- x$getInverse()
-	if(!is.null(inv)){
-		return(inv)
-	}
+  inv <- x$getInverse()
+  if(!is.null(inv)){
+    message("It was stored already.")
+    return(inv)
+  }
 
 
-	data <- x$get()
-	inv <- solve(data)
-	x$setInverse(inv)
-	inv
+  data <- x$get()
+  inv <- solve(data)
+  x$setInverse(inv)
+  inv  
 
 	
 }
